@@ -1,0 +1,12 @@
+services:
+  resilient-gateway-service:
+    image: resilient-gateway-service:1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "5000:5000"
+    environment:
+      - PORT=${PORT}
+      - USER_API_URL=${USER_API_URL}
+      - AUTH_API_URL=${AUTH_API_URL}
