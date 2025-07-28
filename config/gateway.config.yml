@@ -1,5 +1,5 @@
 http:
-  port: 5000
+  port: ${PORT}
 admin:
   port: 9876
   host: localhost
@@ -19,10 +19,11 @@ serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
   users:
-    url: 'http://localhost:8080/api'
+    url: ${USER_API_URL}
   auth:
-    url: 'http://localhost:8080/api'
+    url: ${AUTH_API_URL}
 policies:
+  - jwt
   - basic-auth
   - cors
   - expression
@@ -36,8 +37,6 @@ pipelines:
     apiEndpoints:
       - api
     policies:
-    # Uncomment `key-auth:` when instructed to in the Getting Started guide.
-    # - key-auth:
       - proxy:
           - action:
               serviceEndpoint: httpbin 
