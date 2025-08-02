@@ -10,3 +10,4 @@ services:
       - PORT=${PORT}
       - USER_API_URL=${USER_API_URL}
       - AUTH_API_URL=${AUTH_API_URL}
+      - PROJECTS_API_URL=${PROJECTS_API_URL}

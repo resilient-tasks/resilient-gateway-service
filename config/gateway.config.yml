@@ -15,6 +15,10 @@ apiEndpoints:
     host: localhost
     methods: ['GET', 'POST']
     paths: '/auth*'
+  projects:
+    host: localhost
+    methods: ['GET', 'POST', 'PUT', 'DELETE']
+    paths: '/projects*'
 serviceEndpoints:
   httpbin:
     url: 'https://httpbin.org'
@@ -22,6 +26,8 @@ serviceEndpoints:
     url: ${USER_API_URL}
   auth:
     url: ${AUTH_API_URL}
+  projects:
+    url: ${PROJECTS_API_URL}
 policies:
   - jwt
   - basic-auth
@@ -56,4 +62,12 @@ pipelines:
       - proxy:
           - action:
               serviceEndpoint: auth 
+              changeOrigin: true
+  projects:
+    apiEndpoints:
+      - projects
+    policies:
+      - proxy:
+          - action:
+              serviceEndpoint: projects 
               changeOrigin: true
