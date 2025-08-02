@@ -27,7 +27,7 @@ serviceEndpoints:
   auth:
     url: ${AUTH_API_URL}
   projects:
-    url: ${PROJECTS_API_URL}
+    url: ${PROJECT_API_URL}
 policies:
   - jwt
   - basic-auth
